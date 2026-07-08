@@ -1,0 +1,203 @@
+;#####################################################################################################################
+;## PERSONALIZATION FILE FOR BASE GOKU BLACK							    		                                ##
+;## DON'T modify the values if there isn't any comment explaining what to do just above. This could mess the char.  ##
+;## If you're not sure, make a copy of the file before changing any value.					    					##
+;#####################################################################################################################
+
+[Statedef 5900]
+type = S
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+value = 0
+first = 0
+last = 57 
+
+[State 5900, 2] ;Clear all float variables
+type = VarRangeSet
+trigger1 = roundsexisted = 0
+fvalue = 0
+first = 0
+last = 38
+
+; DO NOT CHANGE ANYTHING ABOVE THIS LINE !!!
+;=================================================
+
+; Throw Tech?
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 0
+;#####################################################################################################################
+;## Choose if and how you want throw teching
+;## 0 = none
+;## 1 = Using Dash Collision
+;## 2 = Normal
+;## Default value is 2
+value = 2
+
+; SUPER BACKGROUND CHOICE
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 13
+;#####################################################################################################################
+;## Choose which super background you want to use when Goku kills the opponent with a Super or Ultra move. Set the
+;## value to 0 to use the Street Fighter 3 Super BG, set the value to 1 to use the Jojo's Bizarre Adventure Super BG.
+;## Set the value to 2 to use the Super Dragon Ball Z Super BG. Set the value to any number greater than 2 to disable
+;## Super Background.
+;## Default value is 2.
+value = 2
+
+
+; REPEL PROJECTILE FX
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 44
+;#####################################################################################################################
+;## Choose which repel projectile you want to use. Set the value to 0 if you want to use the new yellow/blue one. Set
+;## the value to 1 to use the old purple one.
+;## Default value is 0.
+value = 0
+
+
+; EMOTION GAUGE - X AXIS
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 45
+;#####################################################################################################################
+;## Set the value to move the Judgement Gauge to a position that suits you (X Axis in this case). A positive value means
+;## forward (to the middle of the screen), a negative value means backward (to the border of the screen).
+;## Default value is 0.
+value = 0
+
+
+; EMOTION GAUGE - Y AXIS
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 46
+;#####################################################################################################################
+;## Set the value to move the Judgement Gauge to a position that suits you (Y Axis in this case). A positive value means
+;## upward, a negative value means downward.
+;## Default value is 0.
+value = 0
+
+[State 5900, Set Palletes]
+type = Null
+triggerall = roundsexisted = 0
+;Example, to change Palno 1 to 0000-Junny-Template, you'd simply change
+;palno = 1, 1, to palno = 1, 0
+;Change palette for button "a"
+trigger1 =  var(58) != 5900 && var(58) := cond(palno = 1 , 1 , var(58))
+;Change palette for button "b"
+trigger2 = 	var(58) != 1984 && var(58) := cond(palno = 2 , 2 , var(58))
+;Change palette for button "c"
+trigger3 = 	var(58) := cond(palno = 3 , 3, var(58))
+;Change palette for button "x"
+trigger4 = 	var(58) := cond(palno = 4 , 4, var(58))
+;Change palette for button "y"
+trigger5 = 	var(58) := cond(palno = 5 , 5, var(58))
+;Change palette for button "z"
+trigger6 = 	var(58) := cond(palno = 6 , 6 , var(58))
+;Change palette for button "start" + "a"
+trigger7 = 	var(58) := cond(palno = 7 , 7 , var(58))
+;Change palette for button "start" + "b"
+trigger8 = 	var(58) := cond(palno = 8 , 8 , var(58))
+;Change palette for button "start" + "c"
+trigger9 = 	var(58) := cond(palno = 9 , 9 , var(58))
+;Change palette for button "start" + "x"
+trigger10 = 	var(58) := cond(palno = 10, 10, var(58)) 
+;Change palette for button "start" + "y"
+trigger11 = 	var(58) := cond(palno = 11, 11, var(58))
+;Change palette for button "start" + "z"
+trigger12 = 	var(58) := cond(palno = 12, 12, var(58))
+
+;Change palette during intro using direction keys?
+[State 5900, 3]
+type = VarSet
+trigger1 = 1
+v = 5
+;#####################################################################################################################
+;## Up increases 1 pal index, down decreases 1 pal index, right increases 10, down decreases 10. Press Start while in his standing anim to select
+;## 0 is off (Default) and 1 is on
+value = 1
+
+
+;=================================================
+; DO NOT CHANGE ANYTHING BELOW THIS LINE !!!
+
+
+;=================================================
+; DO NOT CHANGE ANYTHING BELOW THIS LINE !!!
+
+
+;Palette Code
+[State 5900, Apply Pal]
+type = RemapPal
+trigger1 = var(58)
+source = 1,1
+dest = 1,var(58)
+
+
+
+
+
+
+
+
+[State Check for Vegeta]
+type = Varset
+triggerall = (var(36)&4) = 0
+triggerall = numenemy
+trigger1 = enemy,name="Vegeta" || enemy,name = "Vegeta Z2"
+trigger2 = enemy,name="SSJ Vegeta" || enemy,name = "SSJ Vegeta Z2"
+trigger3 = enemy,name="Majin Vegeta"
+trigger4 = enemy,name="MajinVedita"
+trigger5 = enemy,name="Vegeta Normal 2 by EB"
+trigger6 = enemy,name="Vegeta Super Sayjin 4 by EB and BS"
+trigger7 = enemy,name="Vegeta by OverMind"
+trigger8 = enemy,name="SSJ Vegeta by Ryon"
+trigger9 = enemy,name="Mystiq Vegeta"
+trigger10 = enemy,name="DK-Super Vegeta "
+trigger11 = enemy,name="Bejiita by Seifer Firehart"
+trigger12 = enemy,name="SSJ2 Majin Vegeta Hyper Demension"
+trigger13 = enemy,name="Prince Vegeta"
+trigger14 = enemy,name="Bebi Vegeta"
+trigger15 = enemy,name="Bejita"
+trigger16 = enemy,name="Majin Vedita by Bacteria"
+trigger17 = enemy,name="Majin Vegeta by Komodo"
+trigger18 = enemy,name="Practice Vegeta by Detah"
+trigger19 = enemy,name="BebiVegeta by Princevegeta"
+trigger19 = enemy,name="Vegeta by DM"
+trigger20 = enemy,name="Vegeta Alpha"
+trigger21 = enemy,name="EvilFighter Vegeta"
+trigger22 = enemy,name="ESF Vegeta By Ninja_Naruto,3D Model By Unknown ESF Modeller"
+trigger23 = enemy,name="VEGETA GT BY NICO"
+trigger24 = enemy,name="MAJIN-VEGETA by BARDOCK"
+trigger25 = enemy,name="Vegeta Saiyan BY franciynaldo"
+trigger26 = enemy,name="Supa Saiyajin Tsu Bejiita"
+trigger27 = enemy,name="OS USSJ Vegeta"
+trigger28 = enemy,name="=El Principe Saiyajin Vegeta= By Team OS"
+trigger29 = enemy,name="Vegeta-Type-R"
+trigger30 = enemy,name="KiKi's Vegeta"
+trigger31 = enemy,name="Vegeta-GT-SSJ2"
+trigger32 = enemy,name="Vegita"
+trigger33 = enemy,name="Vegeta Transform"
+trigger34 = enemy,name="baby vegeta 3D by stopmotiontoys"
+trigger35 = enemy,name = "Vegeta Shinka Z2i"
+trigger36 = enemy,name = "SSJBE Vegeta VF"
+trigger37 = enemy,name = "SSJBE Vegeta"
+trigger38 = enemy,name = "Ssj God VegetaZ2i"
+trigger39 = enemy,name = "Boss SSJBE Vegeta Z2i"
+var(36) = var(36) + 4*((var(36)&4)=0)
+
+
+
+[State 5900, End]
+type = changestate
+trigger1 = !time
+value = ifelse(roundno = 1, 191, 0)
