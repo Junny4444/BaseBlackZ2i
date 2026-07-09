@@ -31,5 +31,6 @@ Various new sprites and FX animations
 Various new animations, made the resprite to add the earring and skirt
 # Plusonblock
 CS work
-#Check The Def file for more in-depth credits
+# Others
+Check The Def file for more in-depth credits
 
