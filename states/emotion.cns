@@ -154,11 +154,11 @@ type = RemoveExplod
 trigger1 = time>=61
 id = 4001
 
-;[State 0, Debug Emo Values]
-;type = Null
-;triggerall = var(50)
-;trigger1 = 1 || var(51) := 600
-;persistent = 0
+[State 0, Debug Emo Values]
+type = Null
+triggerall = var(50)
+trigger1 = 1 || var(51) := 600
+persistent = 0
 
 
 [State 3000, end]

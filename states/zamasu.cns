@@ -1602,7 +1602,7 @@ value = 500000
 
 
 
-;Zamasu Holy Light Grenade Helper
+;Zamasu Light Grenade Helper
 [Statedef 3300]
 type = S
 physics = N
@@ -1619,19 +1619,19 @@ trigger2 = 1 || var(21) := 1
 trigger3 = roundstate != 2
 trigger3 = 1 || var(21) := 1
 
-[State 0, Ground anim]
+[State 0, anim]
 type = ChangeAnim
 trigger1 = root,stateno = 2205
 value = 3300
-elem = 1
 persistent = 0
 
-[State 0, Air anim]
+
+[State 0, ChangeAnim]
 type = ChangeAnim
-trigger1 = root,stateno = 2251
-value = 3300
-elem = 2
-persistent = 0
+trigger1 = root,anim = 2205
+value = anim+1
+persistent = 0 
+
 
 [State 0, TP snd arrive]
 type = Playsnd

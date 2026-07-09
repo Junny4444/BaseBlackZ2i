@@ -89,6 +89,9 @@
 ;fvar(2)  : Temp Var
 ;fvar(3)  : Temp Var
 ;fvar(4)  : TEMP VAR
+;fvar(5)  : Temp Var
+;fvar(6)  : Temp Var
+;fvar(7)  : Temp Var
 ;fvar(8)  : Counter Hit
 ;fvar(9)  : Focus Attack Strength
 ;fvar(10) : Damage Dampener

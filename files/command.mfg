@@ -672,7 +672,6 @@ triggerall = (power >= 2000)
 triggerall = stateno != 2205
 triggerall = numhelper(1375) = 0 && numhelper(1376) = 0
 trigger1 = ctrl
-trigger2 = stateno = [200,440]
 trigger2 = (var(36)&128) != 0 ;Super Cancel On
 trigger3 = (var(36)&256) != 0 ;Special Cancel On
 trigger4 = (var(36)&8192) != 0 ;Backflip Cancel On

@@ -28,6 +28,7 @@ trigger1 = 1 || var(34) := 0 ;Sets if Superpause On Or Not
 trigger1 = 1 || fvar(2) := 0.1 ;Scale for Ball
 trigger1 = 1 || fvar(3) := 1.1 ;Max Scale For Ball
 persistent = 0
+ignorehitpause = 1
 
 
 
@@ -36,6 +37,13 @@ type = PlaySnd
 trigger1 = anim = stateno
 value = S2302,0
 persistent = 0
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+value = 55,0
+ignorehitpause = 1
+
 
 
 [state 0, Rising Effect]
@@ -88,21 +96,35 @@ type = superpause
 trigger1 = anim = stateno+var(11) && animelemtime(3) = 0
 trigger1 = 1 || var(33) := time+70 ;Superpause Time
 trigger1 = 1 || var(34) := 1
-time = var(33)-time
+time = var(33)-time+4
 p2defmul = 1
 unhittable = 1
 anim = -1
-sound = s2350,3
+sound = s2000,0
 darken = 0
-movetime = var(33)-time
+movetime = var(33)-time+4
 persistent = 0
+
+
+[State 100, "Behold The Power of a God" voice]
+type = playsnd
+trigger1 = anim = stateno+var(11) && animelemtime(3) = 0
+value = 2200,6
+channel = 0
+
+
+[State 200, 1];Death Ball Charge
+type = PlaySnd
+trigger1 = anim = stateno+var(11) && animelemtime(3) = 0
+value = 2200, 8
+channel = 1
 
 [State 0, Super FX]
 type = Explod
 trigger1 = anim = stateno+var(11) && animelemtime(3) = 0
 anim = 2003
 id = 2003
-pos = 20,-130 
+pos = 20,-150
 postype = p1
 supermovetime = 9999
 pausemovetime = 9999
@@ -121,7 +143,7 @@ trigger1 = anim = stateno+var(11) && animelemtime(3) = 0
 anim = stateno+2
 ID = stateno+2
 postype = P1
-pos = 20,-130
+pos = 20,-150
 bindtime = -1
 removetime = -1
 removeongethit = 1
@@ -157,6 +179,14 @@ value = stateno+5
 persistent = 0
 
 
+[State 100, "Death Ball" voice]
+type = playsnd
+trigger1 = anim= stateno+5
+value = 2200,7
+channel = 0
+persistent = 0
+
+
 
 [State 0, Change Ball Pos]
 type = ModifyExplod
@@ -164,7 +194,7 @@ triggerall = anim = stateno+5
 trigger1 = Numexplod(stateno+2)
 ID = stateno+2
 postype = P1
-pos = 25,-110
+pos = 25,-115
 persistent = 0
 
 
@@ -186,9 +216,10 @@ trigger1 = !Numhelper(stateno+10)
 stateno = stateno+10
 ID = stateno+10
 postype = P1
+name = "Holy Light Grenade"
 pos = 0,0
 size.head.pos = 30+(var(31)/3),3 ;DMG, then Armor Hits
-size.mid.pos = 6,6 ;Vel X and Y
+size.mid.pos = 7,7 ;Vel X and Y
 size.height = stateno+10 ;Anim
 persistent = 0
 
@@ -197,10 +228,79 @@ persistent = 0
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = anim = stateno+5 && !animtime
-value =50
+value = stateno+3
+ctrl = 0
+
+
+;Light Grenade Fall
+[Statedef 2203]
+type = A
+physics = N
+movetype = A
+ctrl = 0
+anim = 44
+velset = 0,0
+
+
+
+
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = 1 
+y = .45
+
+
+
+[State 0, Land]
+type = ChangeState
+trigger1 = pos y >= 0 && vel y > 0
+value = stateno+1
+ctrl = 0
+
+
+
+;Light Grenade Land
+[Statedef 2204]
+type = S
+physics = N
+movetype = I
+ctrl = 0
+anim = stateno
+velset = 0,0
+
+
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = 1
+y = 0
+
+
+[State 0, Landing Sound]
+type = PlaySnd
+trigger1 = 1
+value = 40, 0
+persistent = 0
+
+[state 0, Land FX]
+type = helper
+trigger1 = 1
+name = "LandFX"
+StateNo = 17100
+id = 17100
+postype = P1
+ownpal = 1
+keyctrl = 0
+supermovetime = 99999
+pausemovetime = 99999
+persistent = 0
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !animtime
+value = 0
 ctrl = 1
-
-
 ;--------------------------
 ;Holy Light Grenade Lvl 2
 [Statedef 2205]
@@ -220,13 +320,19 @@ facep2 = 1
 type = Null
 trigger1 = 1 || var(11) := (statetype = A) ;Prevstatetype
 trigger1 = 1 || var(31) := 0 ;Charge Time
-trigger1 = 1 || var(32) := 70 ;Max Charge Time
+trigger1 = 1 || var(32) := 130 ;Max Charge Time
 trigger1 = 1 || var(33) := 0 ;Superpause Time
 trigger1 = 1 || var(34) := 0 ;Sets if Superpause On Or Not 
-trigger1 = 1 || fvar(2) := 0.1 ;Scale for Ball
-trigger1 = 1 || fvar(3) := 1.1 ;Max Scale For Ball
+trigger1 = 1 || fvar(2) := 0.3 ;Scale for Ball
+trigger1 = 1 || fvar(3) := 1.4 ;Max Scale For Ball
+trigger1 = 1 || fvar(4) := 2202 ;Charge Ball Anim
+trigger1 = 1 || fvar(5) := 2210 ;Actual Ball Anim
+trigger1 = 1 || fvar(6) := 4 ;Armor Hits
+trigger1 = 1 || fvar(7) := 45 ;DMG
+trigger1 = 1 || var(52) := 20 ;Pos X Hold
+trigger1 = 1 || var(53) := -150 ;Pos Y Hold
 persistent = 0
-
+ignorehitpause = 1
 
 
 [State 0, Check for Zamasu Summon]
@@ -239,7 +345,16 @@ triggerall = var(50) >= 1 ;Emo on
 triggerall = var(51) >= 200
 triggerall = !Numhelper(3300)
 trigger1 = 1 || var(36) := var(36) + 131072
+trigger1 = 1 || fvar(4) := 2203 ;Change Charge FX
+trigger1 = 1 || fvar(5) := 2212 ;Actual Ball Anim
+trigger1 = 1 || fvar(2) := 0.6 ;Scale for Ball
+trigger1 = 1 || fvar(3) := 1 ;Max Scale For Ball
+trigger1 = 1 || fvar(6) := 6 ;Armor Hits
+trigger1 = 1 || fvar(7) := 60 ;DMG
+trigger1 = 1 || var(52) := 25 ;Pos X Hold
+trigger1 = 1 || var(53) := -180 ;Pos Y Hold
 persistent = 0
+ignorehitpause = 1
 
 [State 0, LTG Lightning]
 type = PlaySnd
@@ -275,15 +390,15 @@ stateno = 3300
 ID = 3300
 name = "Zamasu Thrower"
 postype = p1
-pos = 0,0
+pos = 0,-10
 ownpal = 1
-supermovetime = 20
-pausemovetime = 20
+supermovetime = 50
 
 [State 0, sky lightning]
 type = explod
-triggerall = time > 8
-trigger1 = gametime%(50-(time-8)/5) = 0
+triggerall = time > 8 && numhelper(3300)
+trigger1 = (50-time/5) > 0
+trigger1 = time%(50-time/5) = 0
 anim = 2450+random%6
 sprpriority = 7
 postype = p1
@@ -296,11 +411,25 @@ supermovetime = -1
 ownpal = 1
 persistent = 1
 
+[State 0, Sky Lighting SND]
+type = playsnd
+triggerall = time > 8 && numhelper(3300)
+trigger1 = (50-time/5) > 0
+trigger1 = time%(50-time/5) = 0
+value = S2400,3
+
+
 [State 0, TP SND]
 type = PlaySnd
 trigger1 = anim = stateno-5
 value = S2302,0
 persistent = 0
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+value = 55,0
+ignorehitpause = 1
 
 
 [state 0, Rising Effect]
@@ -326,7 +455,39 @@ persistent = 0
 ignorehitpause = 1
 
 
+[State 100, Charge voice]
+type = playsnd
+trigger1 = !time
+value = 2200,cond( !Numhelper(3300),12,10)
+channel = 0
+[State 100, Throw voice]
+type = playsnd
+trigger1 = anim = stateno
+value = 2200,cond( !Numhelper(3300),7,11)
+channel = 0
+persistent = 0
 
+
+[State 200, 1];Death Ball Charge
+type = PlaySnd
+trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
+value = 2200, 8
+persistent = 0
+
+
+[State 200, 1];Death Ball Charge With Zam
+type = PlaySnd
+triggerall = numhelper(3300)
+trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
+value = 2000, 10
+persistent = 0
+
+[State 200, 1];Death Ball Charge With Zam 2
+type = PlaySnd
+triggerall = numhelper(3300)
+trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
+value = 2000, 3
+persistent = 0
 
 [State 0, VelSet]
 type = VelSet
@@ -353,21 +514,21 @@ type = superpause
 trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
 trigger1 = 1 || var(33) := time+70 ;Superpause Time
 trigger1 = 1 || var(34) := 1
-time = var(33)-time
+time = var(33)-time+4
 p2defmul = 1
 unhittable = 1
 anim = -1
-sound = s2350,3
+sound = s2350,0
 darken = 0
-movetime = var(33)-time
+movetime = var(33)-time+4
 persistent = 0
 
 [State 0, Super FX]
 type = Explod
 trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
-anim = 2003
-id = 2003
-pos = 20,-130 
+anim = 2441
+id = 2441
+pos = var(52),var(53)
 postype = p1
 supermovetime = 9999
 pausemovetime = 9999
@@ -383,10 +544,10 @@ persistent = 0
 [State 0, Charge FX]
 type = Explod
 trigger1 = anim = (stateno-5)+var(11) && animelemtime(3) = 0
-anim = stateno-3
-ID = stateno-3
+anim = ceil(fvar(4))
+ID = fvar(4)
 postype = P1
-pos = 20,-130
+pos = var(52),var(53)
 bindtime = -1
 removetime = -1
 removeongethit = 1
@@ -399,10 +560,10 @@ scale = fvar(2),fvar(2)
 
 [State 0, Scale Ball]
 type = ModifyExplod
-trigger1 = numexplod(stateno-3)
+trigger1 = numexplod(ceil(fvar(4)))
 trigger1 = fvar(2) <= fvar(3)
 trigger1 = 1 || fvar(2) := fvar(2)+0.009
-ID = stateno-3
+ID = ceil(fvar(4))
 scale = fvar(2),fvar(2)
 
 [State 0, Add To Charge Time]
@@ -426,8 +587,8 @@ persistent = 0
 [State 0, Change Ball Pos]
 type = ModifyExplod
 triggerall = anim = stateno
-trigger1 = Numexplod(stateno+2)
-ID = stateno+2
+trigger1 = Numexplod(fvar(4))
+ID = fvar(4)
 postype = P1
 pos = 25,-110
 persistent = 0
@@ -437,24 +598,25 @@ persistent = 0
 type = RemoveExplod
 trigger1 = anim = stateno
 trigger1 = animelemtime(2) = 0
-trigger1 = Numexplod(stateno-3)
-id = stateno-3
+trigger1 = Numexplod(fvar(4))
+id = fvar(4)
 ignorehitpause = 1
 persistent = 0
 
 
 [State 0, Helper]
 type = Helper
-trigger1 = anim = stateno+5
+trigger1 = anim = stateno
 trigger1 = animelemtime(2) = 0
 trigger1 = !Numhelper(stateno+5)
 stateno = stateno+5
 ID = stateno+5
 postype = P1
+name = "Holy Light Grenade"
 pos = 0,0
-size.head.pos = 30+(var(31)/3),3 ;DMG, then Armor Hits
-size.mid.pos = 6,6 ;Vel X and Y
-size.height = stateno+10 ;Anim
+size.head.pos = fvar(7)+(var(31)/3),fvar(6) ;DMG, then Armor Hits
+size.mid.pos = 10,10 ;Vel X and Y
+size.height = fvar(5) ;Anim
 persistent = 0
 
 
@@ -462,8 +624,8 @@ persistent = 0
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = anim = stateno && !animtime
-value =50
-ctrl = 1
+value = stateno-2
+ctrl = 0
 
 
 
@@ -509,18 +671,32 @@ value = var(3)
 type = BindToRoot
 trigger1 = !prevstateno
 time = 1
-pos = 50,-30
+pos = 60,-40
 ignorehitpause = 1
 persistent = 0
 
+
+[State 0, Light Grenade toss]
+type = playsnd
+trigger1 = !prevstateno
+value = cond(var(3) = 2210,2200,2820),cond(var(3) = 2210,0,1)
+persistent = 0
+volumescale = cond(var(3) = 2210,100,150)
 
 [State 0, VelSet]
 type = VelSet
 trigger1 = 1 
 x = var(5)
 y = var(6)
+persistent = 0
 
 
+[State 0, VelMul]
+type = VelMul
+trigger1 = movecontact
+x = .5
+y = .5
+ignorehitpause = 1
 
 
 [State 0, Add to Armor Hits]
@@ -601,7 +777,7 @@ priority = 7,Hit
 damage = ceil(cond(root,fvar(11) * var(4) < 7, 7, (root,fvar(11)) * var(4))), 4
 getpower = 0,0
 givepower = 35,35
-pausetime = 6,8
+pausetime = 6,6
 animtype = Back
 air.animtype = Back
 fall.animtype = Back
@@ -651,11 +827,6 @@ ctrl = 0
 ignorehitpause = 0
 
 
-[State 0, DestroySelf]
-type = DestroySelf
-trigger1 = frontedgedist <= -20
-
-
 
 
 ;Light Grenade Explode
@@ -673,6 +844,14 @@ trigger1 = 1
 flag = Noshadow
 ignorehitpause = 1
 
+
+[State 0, Light Grenade Leave]
+type = playsnd
+trigger1 = 1
+value = cond(var(3) = 2210,2200,2820),cond(var(3) = 2210,0,1)
+persistent = 0
+volumescale = cond(var(3) = 2210,100,150)
+persistent = 0
 
 
 [State 0, DestroySelf]
