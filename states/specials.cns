@@ -120,7 +120,7 @@ sprpriority = 0
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+50 >= 999,999,var(51)+50)
+var(51) = cond(var(51)+50 >= fvar(12),fvar(12),var(51)+50)
 persistent = 0
 ignorehitpause = 1
 

@@ -3915,11 +3915,11 @@ LoopStart
 ; Light Grenade LVL 2 Leave
 [Begin Action 2213]
 2215,0, 0,0, 2
-2215,1, 0,0, 4
-2215,2, 0,0, 2
-2215,3, 0,0, 2
-2215,4, 0,0, 2
-2215,5, 0,0, 2
+2215,1, 0,0, 5
+2215,2, 0,0, 3
+2215,3, 0,0, 3
+2215,4, 0,0, 5
+2215,5, 0,0, 5
 
 ; Divine retribution 
 [Begin Action 2500]
@@ -7653,7 +7653,75 @@ LoopStart
 
 ; Judgement Bar Gauge Filler
 [Begin Action 31001]
-2751,0, 0,0, -1
+2750,1, 0,0, -1
+
+; Judgement Bar Time Ring
+[Begin Action 31002]
+2751,0, 0,0, 60
+2751,1, 0,0, 2
+2751,2, 0,0, 2
+2751,3, 0,0, 2
+2751,4, 0,0, 2
+2751,5, 0,0, 2
+2751,4, 0,0, 2
+2751,3, 0,0, 2
+2751,2, 0,0, 2
+2751,1, 0,0, 2
+
+; Time Ring 1
+[Begin Action 32000]
+2752,0, 0,0, -1
+
+; Time Ring 2
+[Begin Action 32001]
+2752,1, 0,0, -1
+
+; Time Ring 3
+[Begin Action 32002]
+2752,2, 0,0, -1
+
+; Time Ring 4
+[Begin Action 32003]
+2752,3, 0,0, -1
+
+
+
+; Time Ring 5
+[Begin Action 32004]
+2752,4, 0,0, -1
+
+; Time Ring 6
+[Begin Action 32005]
+2752,5, 0,0, -1
+
+
+; Time Ring 7
+[Begin Action 32006]
+2752,6, 0,0, -1
+
+
+; Time Ring 8
+[Begin Action 32007]
+2752,7, 0,0, -1
+
+
+; Time Ring 9
+[Begin Action 32008]
+2752,8, 0,0, -1
+
+
+; Time Ring 10
+[Begin Action 32009]
+2752,9, 0,0, -1
+
+; Time Ring 11 (Loop)
+[Begin Action 32010]
+2752,10, 0,0, 3
+2752,11, 0,0, 3
+2752,12, 0,0, 3
+2752,13, 0,0, 3
+2752,14, 0,0, 3
+
 
 ; Goku Black Smug Stance
 [Begin Action 800000]

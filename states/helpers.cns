@@ -1952,34 +1952,32 @@ velset = 0, 0
 sprpriority = 7
 anim = 15999
 
-[State 0, DisplayToClipboard]
-type = DisplayToClipboard
-trigger1 = 1
-text = "var(57) = %d"
-params = var(57)
 
 
-[State init]
+[State 0, init]
 type = null
 trigger1 = 1 || var(0) := root,id
-trigger1 = 1 || var(2) := cond(teamside = 1,65+(root,var(45)),   65 + 190 - (root,var(45))) ;Emo Bar X Pos
-trigger1 = 1 || var(3) := 240-(root,var(46)) ;Emo Bar Y Pos
-trigger1 = 1 || var(4) := cond(teamside = 1, 83+(root,var(45)),  237 -(root,var(45))) ;Level Icon X Pos
+trigger1 = 1 || var(2) := cond(teamside = 1,43+(root,var(45)),   65 + 190 - (root,var(45))) ;Emo Bar X Pos
+trigger1 = 1 || var(3) := 235-(root,var(46)) ;Emo Bar Y Pos
+trigger1 = 1 || var(4) := cond(teamside = 1, 18+(root,var(45)),  237 -(root,var(45))) ;Level Icon X Pos
 trigger1 = 1 || var(5) := 236-(root,var(46)) ;Level Icon Y Pos
+trigger1 = 1 || var(6) := cond(teamside = 1,52+(root,var(45)),   65 + 190 - (root,var(45))) ;Time Ring X Pos
+trigger1 = 1 || var(7) := 235-(root,var(46)) ;Time Ring Y Pos
+;We need to keep track of what each individual level threshold is, which is root,fvar(12)/3. 
+trigger1 = 1 || fvar(0) := floor(root,fvar(12)/3)
 trigger1 = 1 || var(19) := root, ID
 persistent = 0
+ignorehitpause = 1
 
-
-[State 0, Add to Emo Levels]
+[State 0, Track Bar Fill]
 type = Null
-trigger1 = root,var(51) < 300
-trigger1 = 1 || var(57) := 0
-trigger2 = root,var(51) >= 300 && root,var(51) < 600
-trigger2 = 1 || var(57) := 1
-trigger3 = root,var(51) >= 600 && root,var(51) < 998 
-trigger3 = 1 || var(57) := 2
-trigger4 = root,var(51) >= 999
-trigger4 = 1 || var(57) := 3
+trigger1 = root,var(51) < root,fvar(12)
+trigger1 = 1 || fvar(1) := ((root,var(51)%(floor(fvar(0)))))/fvar(0)
+trigger2 = root,var(51) >= root,fvar(12)
+trigger2 = 1 || fvar(1) := 1
+ignorehitpause = 1
+
+
 
 
 [State reset hide conditions]
@@ -1994,34 +1992,16 @@ trigger1 = playerid(var(19)),numexplod(991901)
 trigger2 = cond(numenemy,enemynear,numexplod(991901),0)
 var(59) = 1
 
-; Emo Bar
-[State -2, Explod]
-type = Explod
-trigger1 = !NumExplod(31000) 
-anim = 31000
-pos = var(2),var(3)
-postype = left
-removetime = -1
-scale = 0.5,0.5
-sprpriority = 4
-id = 31000
-bindtime = -1
-ontop = 1
-ownpal = 0
-facing = cond(teamside = 1,1,-1)
-ignorehitpause = 1
-pausemovetime = 999999
-supermovetime = 999999
 
 ; Emo Bar Filler
 [State -2, Explod]
 type = Explod
 trigger1 = !NumExplod(31001) 
 anim = 31001
-pos = var(2)-cond(teamside = 1,53,0),var(3)
+pos = var(2),var(3)
 postype = left
 removetime = -1
-scale = 0.5,0.5
+scale = 1,1
 sprpriority = 4
 id = 31001
 bindtime = -1
@@ -2033,65 +2013,115 @@ pausemovetime = 999999
 supermovetime = 999999
 
 
-[State 0, Scale Blue Bar]
+[State 0, Modify Emo Bar Filler]
 type = ModifyExplod
-trigger1 = 1
+trigger1 = numexplod(31001)
 ID = 31001
-scale = cond(var(57) = 0, (root,var(51))/598.0, cond(var(57) = 1, (root,var(51)-300)/598.0, (root,var(51)-600)/775.0)),0.5
+window = -3, -floor(25*fvar(1)), 2, 0
 ignorehitpause = 1
 
 
-[State LVL 0]
+
+; Emo Bar
+[State -2, Explod]
+type = Explod
+trigger1 = !NumExplod(31000) 
+anim = 31000
+pos = var(2),var(3)
+postype = left
+removetime = -1
+scale = 1,1
+sprpriority = 4
+id = 31000
+bindtime = -1
+ontop = 1
+ownpal = 0
+facing = cond(teamside = 1,1,-1)
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+
+; Time Ring
+[State -2, Explod]
+type = Explod
+trigger1 = !NumExplod(31002) 
+anim = 31002
+pos = var(6),var(7)
+postype = left
+removetime = -1
+facing = cond(teamside = 1,1,-1)
+scale = 1,1
+sprpriority = 4
+id = 31002
+bindtime = -1
+ontop = 1
+ownpal = 0
+facing = -1
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+
+[State 0, Remove Time Ring Outline]
+type = RemoveExplod
+trigger1 = (root,var(50))<=0
+trigger2 = var(59) ;Hide Conditions On
+trigger3 = var(58) != floor(root,var(51)/(root,fvar(12)/10))
+trigger3 = 1 || var(58) := floor(root,var(51)/(root,fvar(12)/10)) 
+id = 32000
+
+; Time Ring Filler
+[State -2, Explod]
+type = Explod
+trigger1 = !NumExplod(32000)
+trigger1 = var(58) = floor(root,var(51)/(root,fvar(12)/10)) 
+anim = 32000+var(58)
+pos = var(6),var(7)
+postype = left
+removetime = -1
+facing = cond(teamside = 1,1,-1)
+scale = 1,1
+sprpriority = 4
+id = 32000
+bindtime = -1
+ontop = 1
+ownpal = 0
+facing = -1
+ignorehitpause = 1
+pausemovetime = 999999
+supermovetime = 999999
+
+
+
+;[State 0, Scale Blue Bar]
+;type = ModifyExplod
+;trigger1 = 1
+;ID = 31001
+;scale = cond(var(57) = 0, (root,var(51))/598.0, cond(var(57) = 1, (root,var(51)-300)/598.0, (root,var(51)-600)/775.0)),0.5
+;ignorehitpause = 1
+
+
+[State 0, Remove LVL]
+type = RemoveExplod
+trigger1 = (root,var(50))<=0
+trigger2 = var(59) ;Hide Conditions On
+trigger3 = var(57) != floor(root,var(51)/(root,fvar(12)/3))
+trigger3 = 1 || var(57) := floor(root,var(51)/(root,fvar(12)/3)) ;Add To Emo Level
+id = 2780
+ignorehitpause = 1
+
+[State LVL]
 type = explod
+triggerall = var(57) = floor(root,var(51)/(root,fvar(12)/3))
 triggerall = !var(59) ;Hide conditions are not true
-triggerall = var(57) = 0
 trigger1 = !numexplod(2780)
 id = 2780
-anim = 2780
+anim = 2780+var(57)
 pos = var(4),var(5)
 postype = left
 removetime = -1
-scale = 0.5,0.5
-sprpriority = 4
-bindtime = -1
-ontop = 1
-facing = 1
-ownpal = 1
-ignorehitpause = 1
-pausemovetime = 999999
-supermovetime = 999999
-
-[State LVL 1]
-type = explod
-triggerall = !var(59) ;Hide conditions are not true
-triggerall = var(57) = 1
-trigger1 = !numexplod(2781)
-id = 2781
-anim = 2781
-pos = var(4),var(5)
-postype = left
-removetime = -1
-scale = 0.5,0.5
-sprpriority = 4
-bindtime = -1
-ontop = 1
-facing = 1
-ownpal = 1
-ignorehitpause = 1
-pausemovetime = 999999
-supermovetime = 999999
-
-[State LVL 2]
-type = explod
-triggerall = !var(59) ;Hide conditions are not true
-triggerall = var(57) = 2
-trigger1 = !numexplod(2782)
-id = 2782
-anim = 2782
-pos = var(4),var(5)
-postype = left
-removetime = -1
-scale = 0.5,0.5
+scale = 1,1
 sprpriority = 4
 bindtime = -1
 ontop = 1
@@ -2102,60 +2132,23 @@ pausemovetime = 999999
 supermovetime = 999999
 
 
-[State LVL 3]
-type = explod
-triggerall = !var(59) ;Hide conditions are not true
-triggerall = var(57) = 3
-trigger1 = !numexplod(2783)
-id = 2783
-anim = 2783
-pos = var(4),var(5)
-postype = left
-removetime = -1
-scale = 0.5,0.5
-sprpriority = 4
-bindtime = -1
-ontop = 1
-facing = 1
-ownpal = 1
-ignorehitpause = 1
-pausemovetime = 999999
-supermovetime = 999999
 
-[State 0, RemoveExplod]
+
+[State 0, Remove Bar]
 type = RemoveExplod
 trigger1 = (root,var(50))<=0
 trigger2 = var(59) ;Hide Conditions On
 id = 31000
-[State 0, RemoveExplod]
+[State 0, Remove Bar Filler]
 type = RemoveExplod
 trigger1 = (root,var(50))<=0
 trigger2 = var(59) ;Hide Conditions On
 id = 31001
-[State 0, RemoveExplod]
+[State 0, Remove Time Ring]
 type = RemoveExplod
 trigger1 = (root,var(50))<=0
 trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(57) != 0
-id = 2780
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = (root,var(50))<=0
-trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(57) != 1
-id = 2781
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = (root,var(50))<=0
-trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(57) != 2
-id = 2782
-[State 0, RemoveExplod]
-type = RemoveExplod
-trigger1 = (root,var(50))<=0
-trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(57) != 3
-id = 2783
+id = 31002
 
 
 

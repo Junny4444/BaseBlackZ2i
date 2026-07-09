@@ -74,7 +74,7 @@
 ;48: 
 ;49:
 ;50: EMOTION: JUDGEMENT MODE VAR
-;51: EMOTION: JUDGEMENT MODE BAR VALUE (0-999)
+;51: EMOTION: JUDGEMENT MODE BAR VALUE (Set Max In Config)
 ;52: Temp Var
 ;53: Temp Var
 ;54: Temp Var
@@ -96,6 +96,7 @@
 ;fvar(9)  : Focus Attack Strength
 ;fvar(10) : Damage Dampener
 ;fvar(11) : Root Dampener
+;fvar(12) : Emo Bar Max Value
 ;fvar(13) : Hit Count Reset
 ;fvar(39) : 6.0 Reserved
 ;=============================================

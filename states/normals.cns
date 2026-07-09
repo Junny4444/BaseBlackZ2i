@@ -80,7 +80,7 @@ persistent = 0
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+20 >= 999,999,var(51)+20)
+var(51) = cond(var(51)+20 >= fvar(12),fvar(12),var(51)+20)
 persistent = 0
 ignorehitpause = 1
 
@@ -197,11 +197,11 @@ anim = 210
 
 
 
-[State add to bar]
+[State fvar(12)]
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+35 >= 999,999,var(51)+35)
+var(51) = cond(var(51)+35 >= fvar(12),fvar(12),var(51)+35)
 persistent = 0
 ignorehitpause = 1
 
@@ -285,7 +285,7 @@ juggle = 7
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+40 >= 999,999,var(51)+40)
+var(51) = cond(var(51)+40 >= fvar(12),fvar(12),var(51)+40)
 persistent = 0
 ignorehitpause = 1
 
@@ -379,7 +379,7 @@ persistent = 0
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+65 >= 999,999,var(51)+65)
+var(51) = cond(var(51)+65 >= fvar(12),fvar(12),var(51)+65)
 persistent = 0
 ignorehitpause = 1
 
@@ -488,7 +488,7 @@ juggle = 7
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+65 >= 999,999,var(51)+65)
+var(51) = cond(var(51)+65 >= fvar(12),fvar(12),var(51)+65)
 persistent = 0
 ignorehitpause = 1
 
@@ -914,7 +914,7 @@ persistent = 0
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+5 >= 999,999,var(51)+5)
+var(51) = cond(var(51)+5 >= fvar(12),fvar(12),var(51)+5)
 persistent = 0
 ignorehitpause = 1
 
@@ -998,7 +998,7 @@ juggle = 7
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+12 >= 999,999,var(51)+12)
+var(51) = cond(var(51)+12 >= fvar(12),fvar(12),var(51)+12)
 persistent = 0
 ignorehitpause = 1
 
@@ -1082,7 +1082,7 @@ juggle = 7
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+20 >= 999,999,var(51)+20)
+var(51) = cond(var(51)+20 >= fvar(12),fvar(12),var(51)+20)
 persistent = 0
 ignorehitpause = 1
 
@@ -1589,7 +1589,7 @@ ignorehitpause = 1
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+25 >= 999,999,var(51)+25)
+var(51) = cond(var(51)+25 >= fvar(12),fvar(12),var(51)+25)
 persistent = 0
 ignorehitpause = 1
 
@@ -1757,7 +1757,7 @@ ignorehitpause = 1
 type = varset
 triggerall = var(50)>=1
 trigger1 = movehit
-var(51) = cond(var(51)+30 >= 999,999,var(51)+30)
+var(51) = cond(var(51)+30 >= fvar(12),fvar(12),var(51)+30)
 persistent = 0
 ignorehitpause = 1
 
