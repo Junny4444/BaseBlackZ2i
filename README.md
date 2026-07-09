@@ -1,7 +1,7 @@
 
 
 ## Summary
-A Z2 Inspired character of Base Goku Black. His playstyle is that of ranged focus, mixup character. 
+A Z2 Inspired character of Base Goku Black. His playstyle is that of range focused mixup character. 
 
 He has sprites by Balthazer, edited by Bob Lee and Issei. He also has almost everything one would expect for a Z2 character. Including unique finishers, winposes, and intros.
 
