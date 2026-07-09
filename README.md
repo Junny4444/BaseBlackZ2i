@@ -36,9 +36,9 @@ Check The Def file for more in-depth credits
 
 
 # Issues: 
--Lvl 3 Finisher missing
--CS missing
--One Special move missing
--No real palettes
--No AI
+-Lvl 3 Finisher missing<br>
+-CS missing<br>
+-One Special move missing<br>
+-No real palettes<br>
+-No AI<br>
 
