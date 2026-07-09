@@ -34,3 +34,11 @@ CS work
 # Others
 Check The Def file for more in-depth credits
 
+
+# Issues: 
+-Lvl 3 Finisher missing
+-CS missing
+-One Special move missing
+-No real palettes
+-No AI
+
