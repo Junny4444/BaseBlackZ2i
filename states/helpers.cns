@@ -1996,6 +1996,7 @@ var(59) = 1
 ; Emo Bar Filler
 [State -2, Explod]
 type = Explod
+triggerall = !var(59)
 trigger1 = !NumExplod(31001) 
 anim = 31001
 pos = var(2),var(3)
@@ -2025,6 +2026,7 @@ ignorehitpause = 1
 ; Emo Bar
 [State -2, Explod]
 type = Explod
+triggerall = !var(59)
 trigger1 = !NumExplod(31000) 
 anim = 31000
 pos = var(2),var(3)
@@ -2045,6 +2047,7 @@ supermovetime = 999999
 ; Time Ring
 [State -2, Explod]
 type = Explod
+triggerall = !var(59)
 trigger1 = !NumExplod(31002) 
 anim = 31002
 pos = var(6),var(7)
@@ -2074,6 +2077,7 @@ id = 32000
 ; Time Ring Filler
 [State -2, Explod]
 type = Explod
+triggerall = !var(59)
 trigger1 = !NumExplod(32000)
 trigger1 = var(58) = floor(root,var(51)/(root,fvar(12)/10)) 
 anim = 32000+var(58)
@@ -2091,15 +2095,6 @@ facing = -1
 ignorehitpause = 1
 pausemovetime = 999999
 supermovetime = 999999
-
-
-
-;[State 0, Scale Blue Bar]
-;type = ModifyExplod
-;trigger1 = 1
-;ID = 31001
-;scale = cond(var(57) = 0, (root,var(51))/598.0, cond(var(57) = 1, (root,var(51)-300)/598.0, (root,var(51)-600)/775.0)),0.5
-;ignorehitpause = 1
 
 
 [State 0, Remove LVL]
