@@ -1957,11 +1957,11 @@ anim = 15999
 [State 0, init]
 type = null
 trigger1 = 1 || var(0) := root,id
-trigger1 = 1 || var(2) := cond(teamside = 1,43+(root,var(45)),   65 + 190 - (root,var(45))) ;Emo Bar X Pos
+trigger1 = 1 || var(2) := cond(teamside = 1,43+(root,var(45)),   275 - (root,var(45))) ;Emo Bar X Pos
 trigger1 = 1 || var(3) := 235-(root,var(46)) ;Emo Bar Y Pos
-trigger1 = 1 || var(4) := cond(teamside = 1, 18+(root,var(45)),  237 -(root,var(45))) ;Level Icon X Pos
+trigger1 = 1 || var(4) := cond(teamside = 1, 18+(root,var(45)),  300 -(root,var(45))) ;Level Icon X Pos
 trigger1 = 1 || var(5) := 236-(root,var(46)) ;Level Icon Y Pos
-trigger1 = 1 || var(6) := cond(teamside = 1,52+(root,var(45)),   65 + 190 - (root,var(45))) ;Time Ring X Pos
+trigger1 = 1 || var(6) := cond(teamside = 1,52+(root,var(45)),  265 - (root,var(45))) ;Time Ring X Pos
 trigger1 = 1 || var(7) := 235-(root,var(46)) ;Time Ring Y Pos
 ;We need to keep track of what each individual level threshold is, which is root,fvar(12)/3. 
 trigger1 = 1 || fvar(0) := floor(root,fvar(12)/3)

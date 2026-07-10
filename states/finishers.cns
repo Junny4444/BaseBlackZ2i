@@ -687,7 +687,7 @@ flag2 = GlobalNoShadow
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 [State 0, Speedlines Remove]
 type = RemoveExplod
@@ -817,7 +817,7 @@ ID = -1
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1123,7 +1123,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1191,7 +1191,7 @@ ID = -1
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1238,7 +1238,7 @@ ID = -1
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1444,7 +1444,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1604,7 +1604,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1723,7 +1723,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -1902,7 +1902,7 @@ id = 820012
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, AssertSpecial]
@@ -2831,7 +2831,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 ;P2 Gethit Knocked Side Center
 [Statedef 900035]
@@ -2894,7 +2894,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 ;P2 Invis 
 [Statedef 900040]
@@ -2915,7 +2915,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 
@@ -2957,7 +2957,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 ;P2 Stabbed By Lasso
@@ -2988,7 +2988,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 ;P2 Exploded By Lasso
@@ -3021,7 +3021,7 @@ color = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 [State 0, Overlay]
 type = Explod
@@ -3192,7 +3192,7 @@ persistent = 0
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, PosSet]
@@ -3222,7 +3222,7 @@ ignorehitpause = 1
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, Gethit]
@@ -3281,7 +3281,7 @@ scale = 1+playerid(ceil(gethitvar(fall.envshake.ampl))), fvar(3), 1+playerid(cei
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, Gethit]
@@ -3308,7 +3308,7 @@ ignorehitpause = 1
 type = ScreenBound
 trigger1 = 1
 value = 0
-movecamera = 1,0
+movecamera = 0,0
 
 
 [State 0, Gethit Anim]
