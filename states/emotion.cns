@@ -207,17 +207,18 @@ freq=80
 ampl=1.5+0.02*time
 
 
+
 [State 3000, superpause]
 type = superpause
 triggerall = var(50)
 triggerall = Animelem = 5 
-trigger1 = var(51) < 300 ;LVL 0
+trigger1 = floor(var(51)/(fvar(12)/3)) = 0 ;LVL 0
 trigger1 = 1 || var(35) := 90
-trigger2 = var(51) >= 300 && var(51) < 600 ;LVL 1
+trigger2 = floor(var(51)/(fvar(12)/3)) = 1 ;LVL 1
 trigger2 = 1 || var(35) := 180
-trigger3 = var(51) >= 600 && var(51) < 998 ;LVL 2
+trigger3 = floor(var(51)/(fvar(12)/3)) = 2 ;LVL 2
 trigger3 = 1 || var(35) := 275
-trigger4 = var(51) >= 999 ;LVL 3
+trigger4 = floor(var(51)/(fvar(12)/3)) = 3 ;LVL 3
 trigger4 = 1 || var(35) := 450
 time = 60
 p2defmul = 1
