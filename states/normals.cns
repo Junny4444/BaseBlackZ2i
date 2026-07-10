@@ -2477,7 +2477,7 @@ ctrl = 0
 type = S
 movetype = A
 physics = S
-juggle = cond(!var(9),5,15) ;For short combos off of this grab
+juggle = 15
 velset = 0,0
 ctrl = 0
 anim = 800
@@ -2561,6 +2561,7 @@ trigger1 = MoveHit =1
 trigger1 = NumTarget(800)
 trigger1 = target, StateNo != [800,899]
 trigger1 = target, AuthorName = "Team Z2"
+trigger1 = 1 || var(31) := 1 ;In throw state for zamasu tech denial
 value = 899
 ignorehitpause = 1
  

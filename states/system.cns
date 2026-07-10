@@ -2728,6 +2728,7 @@ p2facing		= 1
 ;p1stateno		= 801
 guard.dist	= 0
 fall		= 1
+fall.envshake.ampl = ID
 fall.recover	= 0
 
 [State 0, ChangeState]
@@ -4224,6 +4225,13 @@ movetype = H
 physics = S
 velset = 0, 0
 
+
+[State 0, Zamasu Tech Denial]
+type = Null
+trigger1 = 1 || var(31) := cond(prevstateno = 800,1,0)
+ignorehitpause = 1
+
+
 [State 0, SelfState]
 type = SelfState
 trigger1 = !Time
@@ -4658,7 +4666,7 @@ triggerall = (var(36)&16) = 0
 triggerall = var(50) ;If emo
 triggerall = command = "holdstart"
 triggerall = !var(9) ;Checks if Zamasu is on stage
-triggerall = var(2) = 1 ;This var was set when Blacks forward throw was teched
+triggerall = var(31) = 1 ;This var was set when Blacks throw was teched
 triggerall = var(51) >= 150 ;Checks Emo Value
 trigger1 = time=10
 trigger1 = 1 || var(51) := var(51) - 150

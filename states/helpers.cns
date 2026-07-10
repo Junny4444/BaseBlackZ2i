@@ -1990,6 +1990,7 @@ type = varset
 trigger1 = playeridexist(var(19))
 trigger1 = playerid(var(19)),numexplod(991901)
 trigger2 = cond(numenemy,enemynear,numexplod(991901),0)
+trigger3 = gamevar(hidebars)
 var(59) = 1
 
 
