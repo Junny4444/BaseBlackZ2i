@@ -2067,12 +2067,10 @@ pausemovetime = 999999
 supermovetime = 999999
 
 
-[State 0, Remove Time Ring Outline]
+[State 0, Remove Time Ring Outline Loop]
 type = RemoveExplod
-trigger1 = (root,var(50))<=0
-trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(58) != floor(root,var(51)/(root,fvar(12)/10))
-trigger3 = 1 || var(58) := floor(root,var(51)/(root,fvar(12)/10)) 
+trigger1 = var(58) != floor(root,var(51)/(root,fvar(12)/10))
+trigger1 = 1 || var(58) := floor(root,var(51)/(root,fvar(12)/10)) 
 id = 32000
 
 ; Time Ring Filler
@@ -2098,12 +2096,10 @@ pausemovetime = 999999
 supermovetime = 999999
 
 
-[State 0, Remove LVL]
+[State 0, Remove LVL Loop]
 type = RemoveExplod
-trigger1 = (root,var(50))<=0
-trigger2 = var(59) ;Hide Conditions On
-trigger3 = var(57) != floor(root,var(51)/(root,fvar(12)/3))
-trigger3 = 1 || var(57) := floor(root,var(51)/(root,fvar(12)/3)) ;Add To Emo Level
+trigger1 = var(57) != floor(root,var(51)/(root,fvar(12)/3))
+trigger1 = 1 || var(57) := floor(root,var(51)/(root,fvar(12)/3)) ;Add To Emo Level
 id = 2780
 ignorehitpause = 1
 
@@ -2145,6 +2141,17 @@ type = RemoveExplod
 trigger1 = (root,var(50))<=0
 trigger2 = var(59) ;Hide Conditions On
 id = 31002
+[State 0, Remove Time Ring Outline]
+type = RemoveExplod
+trigger1 = (root,var(50))<=0
+trigger2 = var(59) ;Hide Conditions On
+id = 32000
+[State 0, Remove LVL]
+type = RemoveExplod
+trigger1 = (root,var(50))<=0
+trigger2 = var(59) ;Hide Conditions On
+id = 2780
+ignorehitpause = 1
 
 
 
